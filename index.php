@@ -4,14 +4,15 @@ include "cabecalho.php";
 ?>
 
 
+
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="cadastroCliente.php">Cadastro de Cliente</a>
-            </li>
-        </ul>
-    
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="cadastroCliente.php">Cadastro de Cliente</a>
+        </li>
+    </ul>
+
 </nav>
 <br>
 
@@ -71,7 +72,5 @@ include "cabecalho.php";
     </tbody>
 
 </table>
-<a href="index.php" class="btn btn-outline-primary" role="button" aria-pressed="true">Voltar</a><br>
-
 </div>
 <? include "scripts.php"; ?>

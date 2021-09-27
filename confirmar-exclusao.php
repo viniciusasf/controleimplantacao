@@ -21,7 +21,7 @@ try {
     if (!$result) {
         header("location: 404.html");
     } else {
-        header("location: listagem.php");
+        header("location: index.php");
     }
     $step = null;
     $conn = null;
