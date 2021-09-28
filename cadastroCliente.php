@@ -3,9 +3,19 @@
 include_once "cabecalho.php";
 ?>
 
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="btn-group">
+        <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menu
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="index.php">Menu Inicial</a>
+        </div>
+</nav>
+</br>
 <form class="needs-validation" action="processa.php" novalidate>
-    <input type="hidden" class="form-control" name="ativo" value="T"><!--Input oculto ativando o cliente cadastrado -->
+    <input type="hidden" class="form-control" name="ativo" value="T">
+    <!--Input oculto ativando o cliente cadastrado -->
 
     <div class="form-group">
         <input type="text" class="form-control" id="validationCustom01" name="razaosocial" placeholder="Digite a Razão Social do Cliente" required>
@@ -25,14 +35,11 @@ include_once "cabecalho.php";
         <textarea type="textarea" class="form-control" name="obs" placeholder="Digite a Observação" required></textarea>
         <div class="invalid-feedback">
             Necessário digitar uma Observação.
-        </div></br>
+        </div>
     </div>
-
-    <button type="submit" class="btn btn-outline-primary">Cadastrar</button><i class="fa fa-floppy-o" aria-hidden="true"></i>
-    <a href="index.php" class="btn btn-outline-info" role="button" aria-pressed="true">Listagem</a>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button type="submit" class="btn btn-outline-primary">Cadastrar</button>
+    </nav>
 </form>
-</br>
-
 </div>
 <? include "scripts.php"; ?>
