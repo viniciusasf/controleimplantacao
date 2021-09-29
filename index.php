@@ -18,6 +18,7 @@ include "cabecalho.php";
 <table class="table table-hover" width="100%">
     <thead class="thead-dark">
         <tr>
+            <th>COD</th>
             <th>EMPRESA</th>
             <th>CONTATO</th>
             <th>AÇÕES</th>
@@ -39,22 +40,33 @@ include "cabecalho.php";
     <?php
     $p = $_GET["procura"]; //captura a variavel do form 
 
-    
-
-    $stmt = $conn->prepare("SELECT * FROM cliente WHERE ativo = 'T' AND razaosocial LIKE '%$p%'"); //inseri a variavel procura dentro do Like
+    $stmt = $conn->prepare("SELECT * 
+                            FROM cliente 
+                            WHERE ativo = 'T' AND 
+                                  razaosocial LIKE '%$p%' OR
+                                  contato     LIKE '%$p%' OR 
+                                  id_cliente = '{$p}' "); //inseri a variavel procura dentro do Like
     $stmt->execute();
-    $count = $stmt->rowCount();
 
-    echo $count."<p> Clientes Encontrados</p>" ;           
+    $count = $stmt->rowCount(); //faz o contador de registros.
+    
+    if ($count == 0) {
+        echo ("<h5>Não Localizado implantações para o cliente $p</h5>");
+
+    } else if ($count == 1) {
+        echo ("<h5>" . $count . " Implantação localizada.</h5>");
+
+    } else if ($count > 1) {
+        echo ("<h5>". $count . " Implantações localizadas</h5>");
+        
+    }
 
     while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-        
-                    
+
     ?>
-    
         <!--Inicia html -->
         <tr>
-
+            <td><?php echo $rs->id_cliente; ?> </td>
             <td><?php echo $rs->razaosocial; ?> </td>
             <td><?php echo $rs->contato; ?></td>
             <td>
@@ -67,9 +79,6 @@ include "cabecalho.php";
 
     <?php
     }
-
-
-
 
     ?>
     </tbody>
