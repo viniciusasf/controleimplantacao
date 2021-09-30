@@ -17,6 +17,7 @@
 
 <body>
     <div class="container">
+        <?php date_default_timezone_set('America/Sao_Paulo');?>
         <div class="shadow-lg p-3 mb-5 bg-body rounded">
             <h1 class="display-4 text-center">Controle de Implantações</h1></br>
         </div>

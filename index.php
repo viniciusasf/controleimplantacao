@@ -10,7 +10,7 @@ include "cabecalho.php";
         </button>
         <div class="dropdown-menu">
             <a class="dropdown-item" href="cadastroCliente.php">Cadastro Cliente</a>
-            <a class="dropdown-item disabled" href="#">Listar Clientes Inativos</a>
+            <a class="dropdown-item" href="cadastroUser.php">Cadastro Usuário</a>
         </div>
 </nav>
 <br>

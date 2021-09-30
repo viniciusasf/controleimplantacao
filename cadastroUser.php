@@ -13,32 +13,34 @@ include_once "cabecalho.php";
         </div>
 </nav>
 </br>
-<form class="needs-validation" action="processaCliente.php" novalidate>
-    <input type="hidden" class="form-control" name="ativo" value="T">
-    <!--Input oculto ativando o cliente cadastrado -->
-
+<form method="POST" class="needs-validation" action="processaUsuario.php" novalidate>
+    
+    <input type="hidden" name="ativo" value="T">
+    <input type="hidden" name="data_cadastro" value='<?php echo date('y-m-d H:i:s'); ?>'>
+    
     <div class="form-group">
-        <input type="text" class="form-control" id="validationCustom01" name="razaosocial" placeholder="Digite a Razão Social do Cliente" required>
+        <input type="text" class="form-control" id="validationCustom01" name="nome" placeholder="Digite o nome" required>
         <div class="invalid-feedback">
-            Necessário digitar a Razão Social.
+            Necessário digitar o Nome.
         </div>
     </div>
 
     <div class="form-group">
-        <input type="text" class="form-control" name="contato" placeholder="Digite o Contato do Cliente" required>
+        <input type="text" class="form-control" name="usuario" placeholder="Crie um Usuário" required>
         <div class="invalid-feedback">
-            Necessário digitar o Contato.
+            Necessário Criar o Usuário.
         </div>
     </div>
 
     <div class="form-group">
-        <textarea type="textarea" class="form-control" name="obs" placeholder="Digite a Observação" required></textarea>
+        <input type="password" class="form-control" name="senha_usuario" placeholder="Crie uma Senha" required>
         <div class="invalid-feedback">
-            Necessário digitar uma Observação.
+            Necessário Criar uma Senha.
         </div>
-    </div>
+    </div>    
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button type="submit" class="btn btn-outline-primary">Cadastrar</button>
+        <button type="submit" class="btn btn-outline-primary" name="enviar" value="Enviar">Cadastrar</button>
     </nav>
 </form>
 </div>

@@ -1,14 +1,11 @@
 <?php
+include_once "conecta.php";
 
 $razaosocial   = $_GET['razaosocial'];
 $contato       = $_GET['contato'];
 $obs           = $_GET['obs'];
 $data_cadastro = $_GET['data_cadastro'];
 $ativo         = $_GET['ativo'];
-
-
-include_once "conecta.php";
-
 
 //INSERT 
 $sql = $conn->prepare("INSERT INTO cliente (razaosocial, contato, obs, data_cadastro, ativo) VALUES (? ,? ,?,?,? )");
@@ -29,15 +26,3 @@ $sql = null;
 $conn = null;
 exit;
 ?>
-
-
-
-
-
-
-
-
-
-
-
-

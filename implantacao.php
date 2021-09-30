@@ -5,7 +5,6 @@ include "cabecalho.php";
 
 $idCliente   = $_GET['id'];
 
-
 $cmd = $conn->prepare('SELECT id_cliente, razaosocial FROM cliente WHERE id_cliente = :idCliente');
 $cmd->bindValue(":idCliente", $idCliente);
 $cmd->execute();

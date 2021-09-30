@@ -10,19 +10,11 @@ if (isset($_GET['status'])) {
             break;
     }
 }
-
+include "cabecalho.php";
 ?>
 
 <!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <!-- Estilos customizados para esse template -->
-    <link href="css/singnin.css" rel="stylesheet">
+
 
     <title>Confirmação de Cadastro</title>
 </head>
