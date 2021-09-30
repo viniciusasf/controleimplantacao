@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 27, 2021 at 01:35 PM
+-- Generation Time: Sep 30, 2021 at 08:10 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -35,7 +35,7 @@ CREATE TABLE `cliente` (
   `contato` varchar(50) NOT NULL,
   `obs` varchar(200) DEFAULT NULL,
   `ativo` varchar(5) NOT NULL,
-  `data_encerramento` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `data_encerramento` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`id_cliente`, `data_cadastro`, `razaosocial`, `contato`, `obs`, `ativo`, `data_encerramento`) VALUES
 (39, '2021-09-24 15:01:44', 'SIERRA TERE', 'Rene', 'Está com pendência na receita.', 'T', '2021-09-24 15:01:44'),
 (40, '2021-09-24 15:04:54', 'ESTRELA GAS E AGUA', 'Thaissa', 'Usa PDV', 'T', '2021-09-24 15:04:54'),
-(41, '2021-09-24 15:33:21', 'KB SERVIÇOS USINAGEM', 'Carlos', 'Pedi para remarcar outro treinamento. ', 'T', '2021-09-24 15:33:21'),
+(41, '2021-09-24 15:33:21', 'KB SERVIÇOS USINAGEM', 'Carlos', 'Pedi para remarcar outro treinamento. ', 'F', '2021-09-27 20:16:44'),
 (42, '2021-09-24 15:34:51', 'MR INTERFER', 'Daniel', 'Enviará as planilhas para importação no sistema.', 'T', '2021-09-24 15:34:51'),
 (43, '2021-09-24 15:36:40', 'CE CHIQUE MODAS', 'Pollyana', 'Usuária utilizando sistema', 'T', '2021-09-24 15:36:40'),
 (44, '2021-09-24 15:38:27', 'CAPUTI PIRACICABA DISTRIB', 'Gabriela', 'Computador fora da rede, ela irá verificar com o técnico.', 'T', '2021-09-24 15:38:27'),
@@ -54,7 +54,9 @@ INSERT INTO `cliente` (`id_cliente`, `data_cadastro`, `razaosocial`, `contato`, 
 (47, '2021-09-24 15:43:42', 'MADEVERA', 'Leiza', 'Madeireira', 'T', '2021-09-24 15:43:42'),
 (48, '2021-09-24 17:02:41', 'ATELIE CARIOCA', 'Natalia', 'Cliente PDV explorar Crediario e financeiro', 'T', '2021-09-24 17:02:41'),
 (49, '2021-09-24 17:05:40', 'LESS NOW', 'Claudio', 'A planilha de produto nem todos os produtos tem o numero de referencia, ele quer que a referencia seja o codigo fiscal.', 'T', '2021-09-24 17:05:40'),
-(50, '2021-09-24 17:07:41', 'DISTRIB ERVA MATE KAISER', 'Adriano', 'Configuramos boleto, falta pagar, irá entrar em contato hoje a tarde.', 'T', '2021-09-24 17:07:41');
+(50, '2021-09-24 17:07:41', 'DISTRIB ERVA MATE KAISER', 'Adriano', 'Configuramos boleto, falta pagar, irá entrar em contato hoje a tarde.', 'T', '2021-09-24 17:07:41'),
+(51, '2021-09-28 12:13:49', 'MINERADORA SALOMAO', 'Renato', 'Instalar Licença', 'T', '2021-09-28 12:13:49'),
+(52, '2021-09-30 16:54:30', 'CENTROBEL COMERCIO', 'GERSON', 'Interesse no GiroPro', 'T', '2021-09-30 16:54:30');
 
 -- --------------------------------------------------------
 
@@ -102,7 +104,37 @@ INSERT INTO `implantacao` (`id_implantacao`, `id_cliente`, `data_implantacao`, `
 (45, 49, '2021-09-24 17:06:19', 'Falei com Claudio, tem integração tray e PDV. Fazer integração amanha.', NULL, 'Claudio'),
 (46, 49, '2021-09-24 17:06:43', 'Perguntou sobre Cupom Fiscal para começar emitir, não tem SAP, mas precisa.', NULL, 'Claudio'),
 (47, 50, '2021-09-24 17:07:49', 'Configuramos boleto, falta pagar, irá entrar em contato hoje a tarde.', NULL, 'Adriano'),
-(48, 50, '2021-09-24 17:08:04', 'Treinamento tirar dúvidas. Cliente precisa emitir nota fiscal, desvinculou o Pedido Ok com o GestãoPRO na integração.', NULL, 'Adriano');
+(48, 50, '2021-09-24 17:08:04', 'Treinamento tirar dúvidas. Cliente precisa emitir nota fiscal, desvinculou o Pedido Ok com o GestãoPRO na integração.', NULL, 'Adriano'),
+(49, 51, '2021-09-28 13:39:35', 'Não tem rede interna, fez cotação para plano em nuvem', NULL, 'Renato'),
+(50, 42, '2021-09-29 13:02:09', 'No financeiro está inserindo contas manuais como telefone, gasolina, agua, fora os diversos que é a despesa do dia a dia.', NULL, 'Daniel');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(220) NOT NULL,
+  `senha_usuario` varchar(220) NOT NULL,
+  `usuario` varchar(220) NOT NULL,
+  `data_cadastro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `ativo` varchar(50) NOT NULL,
+  `data_exclusao` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nome`, `senha_usuario`, `usuario`, `data_cadastro`, `ativo`, `data_exclusao`) VALUES
+(1, 'Vinicius Antonio da Silva Ferreira', '$2y$10$9Eq9x9oE8UQanGpret4V/.EJLXmmKqldyfvXnHvo5dFV8nqCPOlw6', 'viniciusasf', '2021-09-29 15:23:11', 'T', NULL),
+(2, 'Romeu', '$2y$10$rLVVDwWQ/N5oDYsLlPvcEOGgEfIofkXhTDrLYe/CAaMdSgjRE7.6W', 'romeu', '2021-09-30 17:46:14', 'T', '2021-09-30 17:46:14'),
+(3, 'Jonas', '$2y$10$ieIx2AsLQAIhfIDVkdJK3.X0OJYwqhBMFJbxPKW2xzio9.vZ1WQLC', 'jonas', '2021-09-30 17:58:07', 'T', '2021-09-30 17:58:07'),
+(4, 'Camila Castro', '$2y$10$/gzSotzWXcFrE3o5VcLI4.6hIK42gcHsdpKQVZFSWSt824is1k77K', 'camila', NULL, 'T', NULL),
+(5, 'Romualdo', '$2y$10$KWMzmMW0djRO7YIUpQc24OM4FFs8ao5LQV6mbBFT0ljVwMhglQIrC', 'romualdo', NULL, 'T', NULL),
+(6, 'João Anastacio', '$2y$10$Nt2GhRWAji1I7zmAlnqeaeoqaXNT2elhkOEUJyfOJWlw50M8e2Gv.', 'joao', '2021-09-30 20:01:24', 'T', NULL);
 
 --
 -- Indexes for dumped tables
@@ -121,6 +153,12 @@ ALTER TABLE `implantacao`
   ADD PRIMARY KEY (`id_implantacao`);
 
 --
+-- Indexes for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -128,13 +166,19 @@ ALTER TABLE `implantacao`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `implantacao`
 --
 ALTER TABLE `implantacao`
-  MODIFY `id_implantacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_implantacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
