@@ -43,9 +43,10 @@ include "cabecalho.php";
     $stmt = $conn->prepare("SELECT * 
                             FROM cliente 
                             WHERE ativo = 'T' AND 
-                                  razaosocial LIKE '%$p%' OR
+                                  razaosocial LIKE '%$p%' AND
                                   contato     LIKE '%$p%' OR 
-                                  id_cliente = '{$p}' "); //inseri a variavel procura dentro do Like
+                                  id_cliente = '{$p}' ");
+                                  //inseri a variavel procura dentro 
     $stmt->execute();
 
     $count = $stmt->rowCount(); //faz o contador de registros.
