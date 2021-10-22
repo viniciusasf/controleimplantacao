@@ -18,39 +18,35 @@ foreach ($resultado as $key => $values)
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <h1><? echo $values; ?> Implantacao</h1>
+        <h1><? echo $values; ?> Atendimento </h1>
         <!--Busca a Razão Social do cliente-->
     </nav>
     <hr>
 
-    <!--Inicia formulário para Cadastro implantacao-->
-    <form class="needs-validation" action="processaimplacatao.php" novalidate>
+    <!--Inicia formulário para Cadastro Atendimento-->
+    <form class="needs-validation" action="processaatendimento.php" novalidate>
 
         <div class="form-group">
-            <input type="hidden" class="form-control" name="id_cliente" value="<? echo $resultado["id_cliente"]; ?>">
-            <!--Oculta ID do Cliente no Form-->
+            <input type="hidden" class="form-control" name="id_cliente" value="<? echo $resultado["id_cliente"]; ?>"><!--Oculta ID do Cliente no Form-->            
         </div>
+
         <div class="form-group">
-            <input type="text" class="form-control" name="contato" placeholder="Digite o Contato que fez a Implantação" required>
+            <input type="text" class="form-control" name="contato" placeholder="Digite o Contato do Atendimento" required>
             <div class="invalid-feedback">
                 Necessário digitar o Contato.
             </div>
         </div>
 
         <div class="form-group">
-            <textarea type="textarea" class="form-control" name="obs" placeholder="Digite a Observação do Atendimento" required></textarea>
+            <textarea type="textarea" class="form-control" name="observacao" placeholder="Digite a Observação do Atendimento" required></textarea>
             <div class="invalid-feedback">
                 Necessário digitar uma Observação.
             </div>
         </div>
-
-        <div class="input-group mb-3">
-            <input type="datetime-local" name="data" class="form-control">
-        </div>
-
-        <button type="submit" class="btn btn-outline-primary">Cadastrar</button>
-        <a href="index.php" class="btn btn-outline-info" role="button" aria-pressed="true">Listagem</a>
-        <a href="confirmar-exclusao.php" class="btn btn-outline-danger" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModalCenter<? echo $resultado["id_cliente"]; ?>">Finalizar Implantação</a>
+        
+        <button type="submit" class="btn btn-outline-primary">Cadastrar Atendimento</button>
+        <a href="index.php" class="btn btn-outline-info" role="button" aria-pressed="true">Menu Inicial</a>
+        <!--<a href="confirmar-exclusao.php" class="btn btn-outline-danger" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModalCenter<? echo $resultado["id_cliente"]; ?>">Finalizar Implantação</a>-->
     </form>
     <br>
 
@@ -89,8 +85,7 @@ foreach ($resultado as $key => $values)
                 <!--<th>ID Cliente</th>-->
                 <th>Data Cadastro</th>
                 <th>Contato</th>
-                <th>Observação</th>
-                <th>Agendamento</th>
+                <th>Observação</th>                
                 <th>Ações</th>
                 <th></th>
             </tr>
@@ -98,7 +93,7 @@ foreach ($resultado as $key => $values)
         <?php
         // Bloco que realiza o papel do Read - recupera os dados e apresenta na tela
         try {
-            $cmd = $conn->prepare('SELECT * FROM implantacao WHERE id_cliente = :idCliente');
+            $cmd = $conn->prepare('SELECT * FROM atendimento WHERE id_cliente = :idCliente');
             $cmd->bindValue(":idCliente", $idCliente);
             if ($cmd->execute()) {
                 while ($rs = $cmd->fetch(PDO::FETCH_OBJ)) {
@@ -106,29 +101,28 @@ foreach ($resultado as $key => $values)
         ?>
                     <tr>
                         <!--<td><?php echo $rs->id_cliente; ?></td>-->
-                        <td><?php echo $rs->data_implantacao; ?></td>
+                        <td><?php echo $rs->data_atendimento; ?></td>
                         <td><?php echo $rs->contato; ?></td>
-                        <td><?php echo $rs->obs; ?></td>
-                        <td><?php echo $rs->data; ?></td>
-                        <td><button type="submit" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter<?php echo $rs->id_implantacao; ?>">Editar</button></td>
+                        <td><?php echo $rs->observacao; ?></td>                        
+                        <td><button type="submit" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter<?php echo $rs->id; ?>">Editar</button></td>
                         <!--<td><button type="submit" class="btn btn-outline-dark" data-toggle="modal2" data-target="#exampleModalCenter<?php echo $rs->id_implantacao; ?>">Editar</button></td>-->
 
                     </tr>
 
                     <!-- Button trigger modal -->
                     <!-- Modal INICIO -->
-                    <div class="modal fade" id="exampleModalCenter<?php echo $rs->id_implantacao; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id="exampleModalCenter<?php echo $rs->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Editar Implantação || Nº <?php echo $rs->id_implantacao; ?></h5>
+                                    <h5 class="modal-title">Editar Atendimento || Nº <?php echo $rs->id; ?></h5>
                                 </div>
                                 <div class="modal-body">
 
                                     <form class="needs-validation" method="GET">
 
                                         <div class="form-group">
-                                            <input type="hidden" class="form-control" name="id_implantacao" value="<?php echo $rs->id_implantacao; ?>">
+                                            <input type="hidden" class="form-control" name="id_implantacao" value="<?php echo $rs->id; ?>">
                                             <!--Oculta ID do Cliente no Form-->
                                         </div>
 
@@ -137,13 +131,9 @@ foreach ($resultado as $key => $values)
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="obs" value="<?php echo $rs->obs; ?>">
+                                            <input type="text" class="form-control" name="obs" value="<?php echo $rs->observacao; ?>">
                                         </div>
-
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="data" value="<?php echo $rs->data; ?>">
-                                        </div>
-
+                                
                                         <button type="submit" class="btn btn-outline-primary">Salvar</button>
                                     </form>
 
@@ -191,3 +181,4 @@ foreach ($resultado as $key => $values)
 
 </div>
 <? include "scripts.php"; ?>
+

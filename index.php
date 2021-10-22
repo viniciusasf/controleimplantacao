@@ -25,7 +25,7 @@ include "cabecalho.php";
         </tr>
     </thead>
 
-    <form method="GET">
+    <form>
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
             <input type="text" class="form-control" name="procura" placeholder="Busca">
@@ -75,6 +75,7 @@ include "cabecalho.php";
             <td>
                 <center>
                     <a href=implantacao.php?id=<?php echo $rs->id_cliente; ?> <i class="fas fa-bars"></i></a>
+                    <a href=atendimento.php?id=<?php echo $rs->id_cliente; ?> <i class="fas fa-bars"></i></a>
                 </center>
             </td>
         </tr>
