@@ -24,9 +24,8 @@ include "cabecalho.php";
         <label class="sr-only">Endereço de email</label>
         <?= $mensagem ?>
         </br>  
-        </br>
-        <a href="index.php" class="btn btn-outline-primary" role="button" aria-pressed="true">Pagina Inicial</a>        
-        <a href="listagem.php" class="btn btn-outline-primary" role="button" aria-pressed="true">Listagem Clientes</a>        
+        </br>        
+        <a href="index.php" class="btn btn-outline-primary" role="button" aria-pressed="true">Listagem Clientes</a>        
     </form>
 </body>
 </html>

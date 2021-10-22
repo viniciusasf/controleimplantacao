@@ -25,7 +25,7 @@ include "cabecalho.php";
         </tr>
     </thead>
 
-    <form>
+    <form method="GET">
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
             <input type="text" class="form-control" name="procura" placeholder="Busca">
@@ -38,14 +38,16 @@ include "cabecalho.php";
 
     <!-- Bloco que realiza o papel do Read PHP- recupera os dados e apresenta na tela -->
     <?php
-    $p = $_GET["procura"]; //captura a variavel do form 
-
+    $p = $_GET["procura"]; //captura a variavel do form
+    
     $stmt = $conn->prepare("SELECT * 
                             FROM cliente 
-                            WHERE ativo = 'T' AND 
+                            WHERE ativo = 'T' AND
                                   razaosocial LIKE '%$p%' AND
-                                  contato     LIKE '%$p%' OR 
-                                  id_cliente = '{$p}' ");
+                                  contato     LIKE '%$p%' OR
+                                  id_cliente = '$p' 
+                            ORDER BY 'id' DESC");
+                                                              
                                   //inseri a variavel procura dentro 
     $stmt->execute();
 

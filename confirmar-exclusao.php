@@ -2,11 +2,11 @@
 
 try {
     include_once "conecta.php";
+    date_default_timezone_set('America/Sao_Paulo');
 
     $id_cliente          = $_GET['id_cliente'];
     $ativo               = $_GET['ativo'];
-
-    date_default_timezone_set('America/Sao_Paulo');
+    $data_encerramento   = date('Y-m-d H:i:s');
 
     $data = [
         'id_cliente' => $id_cliente,
