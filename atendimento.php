@@ -1,7 +1,7 @@
 <!--Captura o ID da Lista e Busca a Razão Social-->
 <?PHP
 include_once "conecta.php";
-include "cabecalho.php";
+include "cabecalho_atendimento.php";
 
 $idCliente   = $_GET['id'];
 
@@ -18,7 +18,7 @@ foreach ($resultado as $key => $values)
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <h1><? echo $values; ?> Atendimento </h1>
+        <h1><? echo $values; ?> </h1>
         <!--Busca a Razão Social do cliente-->
     </nav>
     <hr>
@@ -136,9 +136,7 @@ foreach ($resultado as $key => $values)
                                 
                                         <button type="submit" class="btn btn-outline-primary">Salvar</button>
                                     </form>
-
-                                   
-
+                                
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <?php
 
-include_once "cabecalho.php";
+include_once "cabecalho_cadcliente.php";
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -32,14 +32,16 @@ include_once "cabecalho.php";
     </div>
 
     <div class="form-group">
-        <textarea type="textarea" class="form-control" name="obs" placeholder="Digite a Observação" required></textarea>
-        <div class="invalid-feedback">
-            Necessário digitar uma Observação.
-        </div>
+        <textarea type="textarea" class="form-control" name="obs" placeholder="Digite a Observação"></textarea>        
     </div>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
     <button type="submit" class="btn btn-outline-primary">Cadastrar</button>
     </nav>
 </form>
 </div>
+
+
+
 <? include "scripts.php"; ?>

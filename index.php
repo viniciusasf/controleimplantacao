@@ -20,8 +20,8 @@ include "cabecalho.php";
         <tr>
             <th>COD</th>
             <th>EMPRESA</th>
-            <th>CONTATO</th>
-            <th>AÇÕES</th>
+            <th>CONTATO</th>            
+            <th></th>                        
         </tr>
     </thead>
 
@@ -43,12 +43,10 @@ include "cabecalho.php";
     $stmt = $conn->prepare("SELECT * 
                             FROM cliente 
                             WHERE ativo = 'T' AND
-                                  razaosocial LIKE '%$p%' AND
-                                  contato     LIKE '%$p%' OR
-                                  id_cliente = '$p' 
+                                  razaosocial LIKE '%$p%' OR
+                                  contato     LIKE '%$p%'                                  
                             ORDER BY 'id' DESC");
-                                                              
-                                  //inseri a variavel procura dentro 
+                                                                                                
     $stmt->execute();
 
     $count = $stmt->rowCount(); //faz o contador de registros.
@@ -72,10 +70,11 @@ include "cabecalho.php";
             <td><?php echo $rs->id_cliente; ?> </td>
             <td><?php echo $rs->razaosocial; ?> </td>
             <td><?php echo $rs->contato; ?></td>
+            
             <td>
-                <center>
-                    <a href=implantacao.php?id=<?php echo $rs->id_cliente; ?> <i class="fas fa-bars"></i></a>
-                    <a href=atendimento.php?id=<?php echo $rs->id_cliente; ?> <i class="fas fa-bars"></i></a>
+                <center>                    
+                    <a href=atendimento.php?id=<?php echo $rs->id_cliente; ?> class="btn btn-outline-primary btn-sm" role="button">Atendimento</a>                    
+                    <a href=implantacao.php?id=<?php echo $rs->id_cliente; ?> class="btn btn-outline-secondary btn-sm" role="button">Implantacão</a>                    
                 </center>
             </td>
         </tr>

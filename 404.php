@@ -1,11 +1,11 @@
-<?php include "cabecalho";?>
+<?php
+include_once "cabecalho_cadcliente.php"
+?>
 
-<body>
-  <div class="page-404">
-    <p class="text-404">404</p>
-    <h2>Registro não Efetuado!</h2>
-    <p>Erro no Cadastro. <br><a href="index.php">Pagina Inicial</a></p>
-  </div>
-</body>
 
-</html>
+<div class="alert alert-danger" role="alert">
+
+  <h2 class="text-center"> Cliente Já Cadastrado...!</h2><br>
+  <p class="text-center"><a href="cadastroCliente.php"> VOLTAR <i class="far fa-user"></i></a> </p>
+</div>
+</div>

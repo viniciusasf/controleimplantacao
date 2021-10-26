@@ -18,7 +18,7 @@ foreach ($resultado as $key => $values)
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <h1><? echo $values; ?> Implantacao</h1>
+        <h1><? echo $values; ?> - IMPLANTACÃO</h1>
         <!--Busca a Razão Social do cliente-->
     </nav>
     <hr>
